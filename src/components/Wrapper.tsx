@@ -18,8 +18,11 @@ export const Wrapper: React.FC<WrapperProps> = ({
   bgGradient,
 }) => {
   const { colorMode } = useColorMode();
-  const bgColor = { light: "rgba(0, 0, 0, 0.491)", dark: "gray.900" };
-  const color = { light: "black", dark: "white" };
+  const bgColor = {
+    light: "rgba(0, 0, 0, 0.491)",
+    dark: "rgba(0, 0, 0, 0.491)",
+  };
+  const color = { light: "black", dark: "black" };
 
   return (
     <Box
