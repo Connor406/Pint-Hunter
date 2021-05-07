@@ -1,8 +1,7 @@
 import { Badge, Box, Flex, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 interface BrewProps {
-  searchTerm: string;
   data: {
     term: string;
     loading: boolean;
@@ -10,12 +9,7 @@ interface BrewProps {
   };
 }
 
-const Brewery: React.FC<BrewProps> = ({ searchTerm, data }) => {
-  // const [data, setData] = useState({
-  //   loading: true,
-  //   breweries: [],
-  // });
-
+const Brewery: React.FC<BrewProps> = ({ data }) => {
   return (
     <Flex wrap="wrap" justifyContent="center">
       {!data.loading ? (

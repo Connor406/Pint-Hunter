@@ -14,7 +14,6 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ value, change, submit }) => {
-  console.log(value);
   return (
     <Wrapper
       bgPic="url('./cans.jpg')"
