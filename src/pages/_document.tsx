@@ -12,7 +12,6 @@ export default class Document extends NextDocument {
             as="font"
             crossOrigin="anonymous"
           />
-          <link href="index.css" rel="stylesheet" />
         </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}

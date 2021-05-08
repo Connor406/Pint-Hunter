@@ -8,6 +8,7 @@ interface WrapperProps {
   bgTone?: { light: string; dark: string };
   bgPic?: string;
   bgGradient?: string;
+  height?: number;
 }
 
 export const Wrapper: React.FC<WrapperProps> = ({
@@ -16,6 +17,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
   bgTone,
   bgPic,
   bgGradient,
+  height,
 }) => {
   const { colorMode } = useColorMode();
   const bgColor = {
@@ -39,6 +41,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
         w="100%"
         bgColor={bgTone ? bgTone[colorMode] : bgColor[colorMode]}
         bgGradient={bgGradient}
+        height={height}
       >
         {children}{" "}
       </Box>

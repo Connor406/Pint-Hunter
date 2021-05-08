@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Text } from "@chakra-ui/react";
+import { Badge, Box, Flex, Text, Image } from "@chakra-ui/react";
 import React from "react";
 
 interface BrewProps {
@@ -22,13 +22,20 @@ const Brewery: React.FC<BrewProps> = ({ data }) => {
               overflow="hidden"
               w={320}
               m={4}
-              h={320}
+              h={380}
             >
-              <Flex p={4}>
-                <Text fontSize={24}>{item.name}</Text>
-              </Flex>
+              <Text p={4} fontSize={24} textAlign="center" h={28}>
+                {item.name}
+              </Text>
+              <Image src="/mug.jpg" alt="pint" h={180} m="auto" />
               <Box d="flex" alignItems="baseline" p={4}>
-                <Badge borderRadius="full" px="2" colorScheme="teal">
+                <Badge
+                  borderRadius="full"
+                  px="2"
+                  colorScheme={
+                    item.brewery_type === "planning" ? "red" : "teal"
+                  }
+                >
                   {item.brewery_type}
                 </Badge>
                 <Box
