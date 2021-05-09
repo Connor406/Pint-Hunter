@@ -7,10 +7,12 @@ const Index = () => {
   const [data, setData] = useState({
     term: "",
     loading: true,
+    filterLocation: "Filter by",
     breweries: [],
   });
 
   const handleSearch = () => {
+    setData({ ...data, loading: true });
     searchResults.searchData(data.term).then((results) => {
       setData({ ...data, loading: false, breweries: results });
     });
@@ -20,6 +22,10 @@ const Index = () => {
     searchResults.getData().then((results) => {
       setData({ ...data, loading: false, breweries: results });
     });
+  };
+
+  const filterLoc = (e) => {
+    setData({ ...data, filterLocation: e.target.value });
   };
 
   useEffect(() => {
@@ -32,6 +38,7 @@ const Index = () => {
         value={data}
         change={(e) => setData({ ...data, term: e.target.value })}
         submit={handleSearch}
+        filterLoc={filterLoc}
       />
       <Brewery data={data} />
       {/* <DarkModeSwitch /> */}

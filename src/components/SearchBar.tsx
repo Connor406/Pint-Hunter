@@ -1,4 +1,14 @@
-import { Button, Flex, Input, Text } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  Flex,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+} from "@chakra-ui/react";
 import React from "react";
 import { useScreenSize } from "../hooks/useScreenSize";
 import { Wrapper } from "./Wrapper";
@@ -7,15 +17,22 @@ interface SearchBarProps {
   value: {
     term: string;
     loading: boolean;
-    breweries: any[];
+    filterLocation: string;
+    breweries: string[];
   };
   change?: React.ChangeEventHandler<HTMLInputElement>;
   submit?: React.FormEventHandler<HTMLInputElement> &
     React.MouseEventHandler<HTMLButtonElement> &
     React.KeyboardEventHandler<HTMLInputElement>;
+  filterLoc?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ value, change, submit }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  value,
+  change,
+  submit,
+  filterLoc,
+}) => {
   const { isMobile, isTablet } = useScreenSize();
 
   return (
@@ -35,7 +52,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, change, submit }) => {
       >
         Pint Hunter
       </Text>
-      <Flex flexWrap="wrap" justifyContent="center">
+      <Flex flexWrap="wrap" justifyContent="center" color="white">
+        {/* <Menu>
+          <MenuButton as={Button} mx={2} rightIcon={<ChevronDownIcon />}>
+            {value.filterLocation}
+          </MenuButton>
+          <MenuList onClick={filterLoc}>
+            <MenuItem value="City">City</MenuItem>
+            <MenuItem value="State">State</MenuItem>
+            <MenuItem value="Zipcode">Zipcode</MenuItem>
+            <MenuItem value="Brewery name">Brewery name</MenuItem>
+          </MenuList>
+        </Menu> */}
         <Input
           variant="flushed"
           color="white"
@@ -54,6 +82,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, change, submit }) => {
           mx={10}
           px={2}
         />
+
         <Button onClick={submit} isLoading={value.loading}>
           Submit
         </Button>
